@@ -1,0 +1,42 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\title{A Lumina TRY LaTeX Project}
+\author{Karthik Sridharan}
+\date{\today}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This Stage 1E keeps the Lumina provider foundation and adds a real backend compile runner with TeX Live, isolated temporary workspaces, backend health checks, status polling, structured logs, and click-to-line diagnostics.
+\end{abstract}
+
+\section{Architecture}
+The browser stores a canonical project object and sends that object to a trusted backend for compilation or AI assistance. The editor, compiler, preview, sync, and AI pieces communicate through provider contracts instead of direct cross-module calls.
+
+\section{A Result}
+\begin{theorem}[Foundation seam]
+If each subsystem is hidden behind a provider interface, then browser-only mode, backend compile mode, and later real-time collaboration can share the same project format.
+\end{theorem}
+
+\begin{proof}
+The project is represented by stable file paths and ids. UI events update the project state, and providers consume snapshots of that state. Replacing a provider changes implementation details but not the document model.
+\end{proof}
+
+\section{Next steps}
+\begin{itemize}
+  \item Stage 1E: real backend PDF compilation, backend health checks, and safer temporary workspaces.
+  \item Stage 1E: structured Copilot fix-error workflows with patch preview.
+  \item Stage 1F: CodeMirror editor upgrade, source/PDF sync hooks, and import polish.
+\end{itemize}
+
+\bibliographystyle{plain}
+\bibliography{refs}
+\end{document}
