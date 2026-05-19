@@ -1,0 +1,4 @@
+\begin{tikzpicture}[scale=1]
+  \draw[rounded corners, thick] (0,0) rectangle (5,2.2);
+  \node[align=center] at (2.5,1.1) {AI returned JSON inside a tikzpicture};
+\end{tikzpicture}
