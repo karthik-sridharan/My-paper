@@ -1,4 +1,5 @@
 \documentclass[11pt]{article}
+\usepackage{xcolor}
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
@@ -11,32 +12,135 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 
+% --- Latexai AI-change highlighting macro ---
+% Set this to \laishowchangesfalse to hide red AI markup.
+\newif\iflaishowchanges
+\laishowchangestrue
+\long\def\lai#1{%
+  \iflaishowchanges
+    {\color{red}#1}%
+  \else
+    #1%
+  \fi
+}
+% --- end Latexai AI-change highlighting macro ---
+
 \begin{document}
 \maketitle
 
 \begin{abstract}
-This Stage 1E keeps the Lumina provider foundation and adds a real backend compile runner with TeX Live, isolated temporary workspaces, backend health checks, status polling, structured logs, and click-to-line diagnostics.
+This paper discusses Jensen's Inequality, a fundamental result in convex analysis and probability theory. We present the theorem, its statement, and a proof based on the properties of convex functions and expectations of random variables. This theorem has wide applications in statistics, economics, and optimization.
 \end{abstract}
 
-\section{Architecture}
-The browser stores a canonical project object and sends that object to a trusted backend for compilation or AI assistance. The editor, compiler, preview, sync, and AI pieces communicate through provider contracts instead of direct cross-module calls.
+
+% BEGIN LAI-OLD id=lai-mpctz4hs-v595vh path=main.tex
+% \section{Prior Works}
+% The browser maintains a canonical project object, which it sends to a trusted backend for compilation or AI assistance. Communication between the editor, compiler, preview, sync, and AI components occurs via provider contracts, avoiding direct cross-module calls.
+% 
+% END LAI-OLD id=lai-mpctz4hs-v595vh
+
+\lai{
+\section{Prior Works}
+Jensen's Inequality has been extensively studied and applied across various fields including statistics, economics, and optimization. Early foundational work established the inequality as a key tool in convex analysis and probability theory. Subsequent research has explored its connections to martingale theory, stochastic processes, and financial mathematics, where it underpins important results involving conditional expectations and submartingales. These developments highlight the theorem's fundamental role and wide-ranging impact in both theoretical and applied contexts.
+}
 
 \section{A Result}
-\begin{theorem}[Foundation seam]
-If each subsystem is hidden behind a provider interface, then browser-only mode, backend compile mode, and later real-time collaboration can share the same project format.
+\begin{theorem}[Jensen's Inequality]
+Let \( F: \mathcal{X} \to \mathbb{R} \) be a convex function on a set \( \mathcal{X} \subseteq \mathbb{R} \), and let \( X \) be a random variable taking values in \( \mathcal{X} \) with finite expectation. Then
+\[
+F\big(\mathbb{E}[X]\big) \leq \mathbb{E}[F(X)].
+\]
 \end{theorem}
 
 \begin{proof}
-The project is represented by stable file paths and ids. UI events update the project state, and providers consume snapshots of that state. Replacing a provider changes implementation details but not the document model.
+By the definition of convexity for vector-valued arguments, for any \( \mathbf{x}_0 \in I \subseteq \mathbb{R}^n \), there exists a subgradient (gradient) \( \nabla F(\mathbf{x}_0) \in \mathbb{R}^n \) such that
+\[
+F(\mathbf{x}) \geq F(\mathbf{x}_0) + \langle \nabla F(\mathbf{x}_0), \mathbf{x} - \mathbf{x}_0 \rangle \quad \text{for all } \mathbf{x} \in I.
+\]
+Set \( \mathbf{x}_0 = \mathbb{E}[\mathbf{X}] \). Taking expectation on both sides,
+\[
+\mathbb{E}[F(\mathbf{X})] \geq F(\mathbb{E}[\mathbf{X}]) + \mathbb{E}\big[\langle \nabla F(\mathbb{E}[\mathbf{X}]), \mathbf{X} - \mathbb{E}[\mathbf{X}] \rangle\big] = F(\mathbb{E}[\mathbf{X}]) + \langle \nabla F(\mathbb{E}[\mathbf{X}]), \mathbb{E}[\mathbf{X}] - \mathbb{E}[\mathbf{X}] \rangle = F(\mathbb{E}[\mathbf{X}]).
+\]
+This completes the proof.
 \end{proof}
 
-\section{Next steps}
-\begin{itemize}
-  \item Stage 1E: real backend PDF compilation, backend health checks, and safer temporary workspaces.
-  \item Stage 1E: structured Copilot fix-error workflows with patch preview.
-  \item Stage 1F: CodeMirror editor upgrade, source/PDF sync hooks, and import polish.
-\end{itemize}
+\newpage
 
+
+% BEGIN LAI-OLD id=lai-mpc4aeee-zcl9r6 path=main.tex
+% \section{Conclusion}
+% 
+% Jensen's Inequality serves as a fundamental tool in various fields such as statistics, economics, and optimization. It provides a powerful way to relate the value of a convex function at an expectation to the expectation of the function itself, enabling bounds and insights in probabilistic analysis, risk assessment, and decision theory. Its versatility makes it indispensable for both theoretical investigations and practical applications.
+% 
+% 
+% END LAI-OLD id=lai-mpc4aeee-zcl9r6
+
+\lai{
+\section{Conclusion}
+
+Jensen's Inequality shines as a guiding light,
+In fields of numbers, ever bright.
+From statistics to markets, it imparts,
+A bridge connecting minds and hearts.
+
+Convex functions and expectations entwine,
+Where theory and practice align.
+Bounds and insights it does bestow,
+In risks we face and choices we know.
+
+Importantly, Jensen's Inequality connects deeply with martingale theory.
+Martingales, sequences of random variables with fair-game properties,
+allow the use of conditional expectations, where Jensen's Inequality ensures
+convex functions of martingales form submartingales.
+This connection underpins many results in stochastic processes and financial mathematics,
+highlighting the inequality's fundamental role beyond static expectations.
+
+A tool so versatile, strong, and true,
+In every problem, it sees us through.
+From abstract thought to real-world calls,
+Its wisdom stands, and never falls.
+}
 \bibliographystyle{plain}
 \bibliography{refs}
 \end{document}
+% BEGIN LAI-OLD id=lai-mpc53fxo-x8rhu3 path=main.tex
+% 
+% END LAI-OLD id=lai-mpc53fxo-x8rhu3
+
+\lai{
+Stage 4H could not apply rewrite: No source selection found. Select source text in the editor first.
+
+AI response:
+{
+  "summary": "Rewrite the abstract to sound happier and more enthusiastic.",
+  "replacementLatex": "This paper joyfully explores Jensen's Inequality, a beautiful and fundamental result in convex analysis and probability theory. We enthusiastically present the theorem, its clear statement, and an elegant proof based on the delightful properties of convex functions and expectations of random variables. This powerful theorem opens doors to exciting applications in statistics, economics, and optimization, inspiring further exploration and discovery."
+}
+}
+
+% BEGIN LAI-OLD id=lai-mpc558w4-zc92ic path=main.tex
+% 
+% END LAI-OLD id=lai-mpc558w4-zc92ic
+
+\lai{
+Stage 4H could not apply rewrite: No source selection found. Select source text in the editor first.
+
+AI response:
+{
+  "summary": "Rewrite the conclusion section as rap lyrics about Jensen's Inequality.",
+  "replacementLatex": "\\section{Conclusion}\n\nYo, Jensen's Inequality, the spotlight's on,\nIn the world of math, it keeps us strong.\nFrom stats to economics, it’s the key,\nBridgin' gaps where numbers meet reality.\n\nConvex functions, expectations collide,\nTheory and practice, side by side.\nDroppin' bounds and insights, makin' it clear,\nIn risk and choice, it’s the tool we cheer.\n\nVersatile, powerful, never gonna fall,\nIn every problem, it answers the call.\nFrom abstract thoughts to real-world scenes,\nJensen’s wisdom reigns supreme, know what I mean?"
+}
+}
+
+% BEGIN LAI-OLD id=lai-mpc57d71-lo8a6s path=main.tex
+% 
+% END LAI-OLD id=lai-mpc57d71-lo8a6s
+
+\lai{
+Stage 4H could not apply rewrite: No source selection found. Select source text in the editor first.
+
+AI response:
+{
+  "summary": "Rewrite the conclusion section as rap lyrics about Jensen's Inequality.",
+  "replacementLatex": "\\section{Conclusion}\n\nYo, Jensen's Inequality, the spotlight's on,\nIn the world of math, it keeps us strong.\nFrom stats to economics, it’s the key,\nBridgin' gaps where numbers meet reality.\n\nConvex functions, expectations collide,\nTheory and practice, side by side.\nDroppin' bounds and insights, makin' it clear,\nIn risk and choice, it’s the tool we cheer.\n\nVersatile, powerful, never gonna fall,\nIn every problem, it answers the call.\nFrom abstract thoughts to real-world scenes,\nJensen’s wisdom reigns supreme, know what I mean?"
+}
+}
