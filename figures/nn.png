@@ -1,0 +1,57 @@
+\begin{tikzpicture}[scale=1]
+json
+{
+  "slides": [
+    {
+      "elements": [
+        {
+          "type": "blockDiagram",
+          "id": "nn_block_diagram",
+          "title": "One Hidden Layer Feed Forward Neural Network",
+          "blocks": [
+            {
+              "id": "input_layer",
+              "label": "Input Layer",
+              "position": {"x": 100, "y": 200},
+              "nodes": [
+                {"id": "x1", "label": "x₁", "type": "input"},
+                {"id": "x2", "label": "x₂", "type": "input"}
+              ]
+            },
+            {
+              "id": "hidden_layer",
+              "label": "Hidden Layer (m units)",
+              "position": {"x": 350, "y": 200},
+              "nodes": [
+                {"id": "h1", "label": "h₁ = σ( w₁₁x₁ + w₁₂x₂ + b₁ )", "type": "hidden"},
+                {"id": "h2", "label": "h₂ = σ( w₂₁x₁ + w₂₂x₂ + b₂ )", "type": "hidden"},
+                {"id": "h3", "label": "⋮", "type": "hidden"},
+                {"id": "hm", "label": "hₘ = σ( wₘ₁x₁ + wₘ₂x₂ + bₘ )", "type": "hidden"}
+              ]
+            },
+            {
+              "id": "output_layer",
+              "label": "Output Layer",
+              "position": {"x": 600, "y": 200},
+              "nodes": [
+                {"id": "y", "label": "y = φ( v₁h₁ + v₂h₂ + ⋯ + vₘhₘ + c )", "type": "output"}
+              ]
+            }
+          ],
+          "connections": [
+            {"from": "x1", "to": "h1", "label": "w₁₁"},
+            {"from": "x2", "to": "h1", "label": "w₁₂"},
+            {"from": "x1", "to": "h2", "label": "w₂₁"},
+            {"from": "x2", "to": "h2", "label": "w₂₂"},
+            {"from": "x1", "to": "hm", "label": "wₘ₁"},
+            {"from": "x2", "to": "hm", "label": "wₘ₂"},
+            {"from": "h1", "to": "y", "label": "v₁"},
+            {"from": "h2", "to": "y", "label": "v₂"},
+            {"from": "hm", "to": "y", "label": "vₘ"}
+          ]
+        }
+      ]
+    }
+  ]
+}
+\end{tikzpicture}
