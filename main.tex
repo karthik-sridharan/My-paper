@@ -13,6 +13,11 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 
+
+% --- Latexai old-content highlighting macro ---
+% Old paper content preserved by paper-level AI in-place edits.
+\long\def\laiold#1{{\color{blue}#1}}
+% --- end Latexai old-content highlighting macro ---
 % --- Latexai AI-change highlighting macro ---
 % Set this to \laishowchangesfalse to hide red AI markup.
 \newif\iflaishowchanges
@@ -32,37 +37,37 @@
 \maketitle
 
 \begin{abstract}
-This paper discusses Jensen's Inequality, a fundamental result in convex analysis and probability theory. We present the theorem, its statement, and a proof based on the properties of convex functions and expectations of random variables. This theorem has wide applications in statistics, economics, and optimization.
+
+
+
+This paper explores Jensen's Inequality, a cornerstone theorem in convex analysis and probability theory. We provide a clear statement of the theorem along with a proof that leverages the properties of convex functions and the expectation operator on random variables. The inequality's broad applicability spans statistics, economics, and optimization.
+
 \end{abstract}
 
 
-% BEGIN LAI-OLD id=lai-mpctz4hs-v595vh path=main.tex
-% \section{Prior Works}
-% The browser maintains a canonical project object, which it sends to a trusted backend for compilation or AI assistance. Communication between the editor, compiler, preview, sync, and AI components occurs via provider contracts, avoiding direct cross-module calls.
-% 
-% END LAI-OLD id=lai-mpctz4hs-v595vh
 
-\lai{
-\section{Prior Works}
-Jensen's Inequality has been extensively studied and applied across various fields including statistics, economics, and optimization. Early foundational work established the inequality as a key tool in convex analysis and probability theory. Subsequent research has explored its connections to martingale theory, stochastic processes, and financial mathematics, where it underpins important results involving conditional expectations and submartingales. These developments highlight the theorem's fundamental role and wide-ranging impact in both theoretical and applied contexts.
-}
 
-\section{A Result}
+\section{Related Work}
+Jensen's Inequality is a classical result with a rich history in convex analysis and probability theory. Early foundational texts such as Hardy, Littlewood, and Pólya (1934) and later works by Rockafellar (1970) formalized its role in convex functions and expectations. The inequality has been extensively applied in statistics, economics, and optimization. More recent research has explored its extensions and applications in martingale theory, stochastic processes, and financial mathematics, where it underpins key results involving conditional expectations and submartingales \cite{durrett2019probability, shreve2004stochastic}. These developments underscore the theorem's fundamental role and broad impact in both theoretical and applied contexts.
+Here are a few key results that use JEnsen's inequality as a key tool \cite{hardy1934inequalities,rockafellar1970convex,durrett2019probability,shreve2004stochastic}
+
+\section{Main Result}
+The below is Jensen's inequality, see \cite{hardy1934inequalities} for a reference.
 \begin{theorem}[Jensen's Inequality]
-Let \( F: \mathcal{X} \to \mathbb{R} \) be a convex function on a set \( \mathcal{X} \subseteq \mathbb{R} \), and let \( X \) be a random variable taking values in \( \mathcal{X} \) with finite expectation. Then
+Let \( F: \mathcal{X} \to \mathbb{R} \) be a convex function defined on a convex set \( \mathcal{X} \subseteq \mathbb{R}^n \), and let \( \mathbf{X} \) be a random vector taking values in \( \mathcal{X} \) with finite expectation \( \mathbb{E}[\mathbf{X}] \in \mathcal{X} \). Then
 \[
-F\big(\mathbb{E}[X]\big) \leq \mathbb{E}[F(X)].
+F\big(\mathbb{E}[\mathbf{X}]\big) \leq \mathbb{E}[F(\mathbf{X})].
 \]
 \end{theorem}
 
 \begin{proof}
-By the definition of convexity for vector-valued arguments, for any \( \mathbf{x}_0 \in I \subseteq \mathbb{R}^n \), there exists a subgradient (gradient) \( \nabla F(\mathbf{x}_0) \in \mathbb{R}^n \) such that
+By the definition of convexity, for any fixed point \( \mathbf{x}_0 \in \mathcal{X} \), there exists a subgradient \( \mathbf{g} \in \partial F(\mathbf{x}_0) \) such that
 \[
-F(\mathbf{x}) \geq F(\mathbf{x}_0) + \langle \nabla F(\mathbf{x}_0), \mathbf{x} - \mathbf{x}_0 \rangle \quad \text{for all } \mathbf{x} \in I.
+F(\mathbf{x}) \geq F(\mathbf{x}_0) + \langle \mathbf{g}, \mathbf{x} - \mathbf{x}_0 \rangle \quad \text{for all } \mathbf{x} \in \mathcal{X}.
 \]
-Set \( \mathbf{x}_0 = \mathbb{E}[\mathbf{X}] \). Taking expectation on both sides,
+Setting \( \mathbf{x}_0 = \mathbb{E}[\mathbf{X}] \) and taking expectation with respect to \( \mathbf{X} \), we get
 \[
-\mathbb{E}[F(\mathbf{X})] \geq F(\mathbb{E}[\mathbf{X}]) + \mathbb{E}\big[\langle \nabla F(\mathbb{E}[\mathbf{X}]), \mathbf{X} - \mathbb{E}[\mathbf{X}] \rangle\big] = F(\mathbb{E}[\mathbf{X}]) + \langle \nabla F(\mathbb{E}[\mathbf{X}]), \mathbb{E}[\mathbf{X}] - \mathbb{E}[\mathbf{X}] \rangle = F(\mathbb{E}[\mathbf{X}]).
+\mathbb{E}[F(\mathbf{X})] \geq F(\mathbb{E}[\mathbf{X}]) + \mathbb{E}[\langle \mathbf{g}, \mathbf{X} - \mathbb{E}[\mathbf{X}] \rangle] = F(\mathbb{E}[\mathbf{X}]) + \langle \mathbf{g}, \mathbb{E}[\mathbf{X}] - \mathbb{E}[\mathbf{X}] \rangle = F(\mathbb{E}[\mathbf{X}]).
 \]
 This completes the proof.
 \end{proof}
@@ -70,57 +75,25 @@ This completes the proof.
 \newpage
 
 
-\begin{figure}[t]
-  \centering
-  \IfFileExists{figures/drawn-figure-2026-05-19T22-10-56.png}{%
-    \includegraphics[width=.8\linewidth]{figures/drawn-figure-2026-05-19T22-10-56.png}%
-  }{%
-    \fbox{\parbox{.8\linewidth}{\centering Missing figure file: \texttt{\detokenize{figures/drawn-figure-2026-05-19T22-10-56.png}}}}%
-  }
-  \label{fig:drawn-figure-2026-05-19t22-10-56}
-\end{figure}
+% Figure placeholder removed due to missing file. Consider adding a figure illustrating Jensen's Inequality with convex function and expectation points for better intuition.
+
+
+
+% The TikZ figure of a car is unrelated to the paper content and should be removed or replaced with a relevant figure illustrating Jensen's Inequality or convexity concepts.
 
 
 
 
-% BEGIN LAI-OLD id=lai-mpc4aeee-zcl9r6 path=main.tex
-% \section{Conclusion}
-% 
-% Jensen's Inequality serves as a fundamental tool in various fields such as statistics, economics, and optimization. It provides a powerful way to relate the value of a convex function at an expectation to the expectation of the function itself, enabling bounds and insights in probabilistic analysis, risk assessment, and decision theory. Its versatility makes it indispensable for both theoretical investigations and practical applications.
-% 
-% 
-% END LAI-OLD id=lai-mpc4aeee-zcl9r6
-
-\lai{
 \section{Conclusion}
 
-Jensen's Inequality shines as a guiding light,
-In fields of numbers, ever bright.
-From statistics to markets, it imparts,
-A bridge connecting minds and hearts.
+Jensen's Inequality elegantly links convex functions and expectations, providing fundamental bounds and insights across statistics, economics, and optimization.
 
-Convex functions and expectations entwine,
-Where theory and practice align.
-Bounds and insights it does bestow,
-In risks we face and choices we know.
+Moreover, the inequality plays a crucial role in martingale theory. Since martingales are sequences of random variables with the "fair game" property, Jensen's Inequality applied to conditional expectations ensures that convex functions of martingales form submartingales. This connection underpins many important results in stochastic processes and financial mathematics, highlighting the inequality's fundamental role beyond static expectations.
 
-Importantly, Jensen's Inequality connects deeply with martingale theory.
-Martingales, sequences of random variables with fair-game properties,
-allow the use of conditional expectations, where Jensen's Inequality ensures
-
-
-convex functions of martingales form submartingales.
-This connection underpins many results in stochastic processes and financial mathematics,
-highlighting the inequality's fundamental role beyond static expectations.
-
-A tool so versatile, strong, and true,
-In every problem, it sees us through.
-From abstract thought to real-world calls,
-Its wisdom stands, and never falls.
-}
+Future work could explore extensions to infinite-dimensional settings and applications in modern machine learning frameworks.
+ 
 \bibliographystyle{plain}
 \bibliography{refs}
-
 
 
 \end{document}
