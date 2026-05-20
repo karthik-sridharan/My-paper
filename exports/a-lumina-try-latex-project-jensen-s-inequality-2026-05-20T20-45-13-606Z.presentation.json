@@ -1,0 +1,216 @@
+{
+  "schema": "presentation-maker-deck-v1",
+  "exportSchema": "latexai-presentation-maker-json-v1",
+  "stage": "stage13b-presentation-maker-compatible-export-1",
+  "deckTitle": "A Lumina TRY LaTeX Project: Jensen's Inequality",
+  "summary": "An exploration of Jensen's Inequality, its proof, significance, and applications in probability, statistics, and optimization.",
+  "slides": [
+    {
+      "slideType": "title-center",
+      "headingLevel": "h1",
+      "bgColor": "#ffffff",
+      "fontColor": "#000000",
+      "inheritTheme": true,
+      "title": "A Lumina TRY LaTeX Project",
+      "kicker": "Jensen's Inequality",
+      "lede": "Exploring the theorem, proof, and applications of Jensen's Inequality",
+      "leftBlocks": [],
+      "rightBlocks": [],
+      "notesTitle": "Introduction",
+      "notesBody": "This presentation covers Jensen's Inequality, a fundamental result in convex analysis and probability theory, including its statement, proof, and applications."
+    },
+    {
+      "slideType": "single",
+      "headingLevel": "h2",
+      "bgColor": "#ffffff",
+      "fontColor": "#000000",
+      "inheritTheme": true,
+      "title": "Background and Related Work",
+      "kicker": "Context",
+      "lede": "Historical and modern perspectives on Jensen's Inequality",
+      "leftBlocks": [
+        {
+          "mode": "plain",
+          "title": "Key Points",
+          "content": "\\begin{itemize}\n\\item Classical result in convex analysis and probability theory\n\\item Early formalizations by Hardy, Littlewood, Pólya (1934) and Rockafellar (1970)\n\\item Widely applied in statistics, economics, and optimization\n\\item Extensions in martingale theory and stochastic processes\n\\item Fundamental in financial mathematics for conditional expectations and submartingales\n\\end{itemize}"
+        }
+      ],
+      "rightBlocks": [],
+      "notesTitle": "Related Work Notes",
+      "notesBody": "Jensen's Inequality has a rich history and broad impact, with foundational texts and modern applications in various fields."
+    },
+    {
+      "slideType": "single",
+      "headingLevel": "h2",
+      "bgColor": "#ffffff",
+      "fontColor": "#000000",
+      "inheritTheme": true,
+      "title": "Jensen's Inequality: Statement",
+      "kicker": "Main Theorem",
+      "lede": "Formal statement of Jensen's Inequality for convex functions and random vectors",
+      "leftBlocks": [
+        {
+          "mode": "pseudocode-latex",
+          "title": "Theorem (Jensen's Inequality)",
+          "content": "EQ: \\[\nF\\big(\\mathbb{E}[\\mathbf{X}]\\big) \\leq \\mathbb{E}[F(\\mathbf{X})]\n\\]\nwhere \\(F: \\mathcal{X} \\to \\mathbb{R}\\) is convex on convex set \\(\\mathcal{X} \\subseteq \\mathbb{R}^n\\), and \\(\\mathbf{X}\\) is a random vector with \\(\\mathbb{E}[\\mathbf{X}] \\in \\mathcal{X}\\)."
+        }
+      ],
+      "rightBlocks": [],
+      "notesTitle": "Theorem Explanation",
+      "notesBody": "Jensen's Inequality relates the value of a convex function at the expectation of a random vector to the expectation of the function applied to the vector."
+    },
+    {
+      "slideType": "single",
+      "headingLevel": "h2",
+      "bgColor": "#ffffff",
+      "fontColor": "#000000",
+      "inheritTheme": true,
+      "title": "Proof Outline of Jensen's Inequality",
+      "kicker": "Key Ideas",
+      "lede": "Using convexity and subgradients to prove the inequality",
+      "leftBlocks": [
+        {
+          "mode": "plain",
+          "title": "Proof Sketch",
+          "content": "\\begin{itemize}\n\\item By convexity, for any \\(\\mathbf{x}_0 \\in \\mathcal{X}\\), there exists a subgradient \\(\\mathbf{g} \\in \\partial F(\\mathbf{x}_0)\\)\n\\item Inequality: \\(F(\\mathbf{x}) \\geq F(\\mathbf{x}_0) + \\langle \\mathbf{g}, \\mathbf{x} - \\mathbf{x}_0 \\rangle\\) for all \\(\\mathbf{x} \\in \\mathcal{X}\\)\n\\item Set \\(\\mathbf{x}_0 = \\mathbb{E}[\\mathbf{X}]\\) and take expectation over \\(\\mathbf{X}\\)\n\\item Use linearity of expectation and inner product\n\\item Conclude \\(\\mathbb{E}[F(\\mathbf{X})] \\geq F(\\mathbb{E}[\\mathbf{X}])\\)\n\\end{itemize}"
+        }
+      ],
+      "rightBlocks": [
+        {
+          "mode": "pseudocode-latex",
+          "title": "Proof Equations",
+          "content": "EQ: \\[\nF(\\mathbf{x}) \\geq F(\\mathbf{x}_0) + \\langle \\mathbf{g}, \\mathbf{x} - \\mathbf{x}_0 \\rangle\n\\]\nEQ: \\[\n\\mathbb{E}[F(\\mathbf{X})] \\geq F(\\mathbb{E}[\\mathbf{X}]) + \\mathbb{E}[\\langle \\mathbf{g}, \\mathbf{X} - \\mathbb{E}[\\mathbf{X}] \\rangle] = F(\\mathbb{E}[\\mathbf{X}])\n\\]"
+        }
+      ],
+      "notesTitle": "Proof Details",
+      "notesBody": "The proof leverages the subgradient inequality and linearity of expectation to establish Jensen's Inequality."
+    },
+    {
+      "slideType": "single",
+      "headingLevel": "h2",
+      "bgColor": "#ffffff",
+      "fontColor": "#000000",
+      "inheritTheme": true,
+      "title": "Intuition Behind Jensen's Inequality",
+      "kicker": "Conceptual Understanding",
+      "lede": "Why convexity and expectation interact as stated",
+      "leftBlocks": [
+        {
+          "mode": "plain",
+          "title": "Intuition",
+          "content": "\\begin{itemize}\n\\item Convex functions lie below their tangent lines\n\\item Expectation is a weighted average\n\\item Applying a convex function after averaging is less than averaging after applying the function\n\\item Geometrically, the function's curve is 'bent upwards'\n\\end{itemize}"
+        }
+      ],
+      "rightBlocks": [],
+      "notesTitle": "Intuition Notes",
+      "notesBody": "This slide helps the audience grasp the geometric and probabilistic intuition behind the inequality."
+    },
+    {
+      "slideType": "single",
+      "headingLevel": "h2",
+      "bgColor": "#ffffff",
+      "fontColor": "#000000",
+      "inheritTheme": true,
+      "title": "Applications of Jensen's Inequality",
+      "kicker": "Use Cases",
+      "lede": "Where Jensen's Inequality plays a crucial role",
+      "leftBlocks": [
+        {
+          "mode": "plain",
+          "title": "Applications",
+          "content": "\\begin{itemize}\n\\item Statistics: bounding moments and variances\n\\item Economics: utility theory and risk aversion\n\\item Optimization: convex optimization problems\n\\item Martingale theory: convex functions of martingales form submartingales\n\\item Financial mathematics: pricing and risk measures\n\\end{itemize}"
+        }
+      ],
+      "rightBlocks": [],
+      "notesTitle": "Applications Notes",
+      "notesBody": "Jensen's Inequality is foundational in many theoretical and applied fields, especially where convexity and expectations intersect."
+    },
+    {
+      "slideType": "single",
+      "headingLevel": "h2",
+      "bgColor": "#ffffff",
+      "fontColor": "#000000",
+      "inheritTheme": true,
+      "title": "Jensen's Inequality in Martingale Theory",
+      "kicker": "Stochastic Processes",
+      "lede": "Connecting convexity with martingales and submartingales",
+      "leftBlocks": [
+        {
+          "mode": "plain",
+          "title": "Martingale Connection",
+          "content": "\\begin{itemize}\n\\item Martingales: sequences with 'fair game' property\n\\item Applying convex functions to martingales yields submartingales\n\\item Jensen's Inequality applied to conditional expectations\n\\item Fundamental in stochastic process theory and finance\n\\end{itemize}"
+        }
+      ],
+      "rightBlocks": [],
+      "notesTitle": "Martingale Notes",
+      "notesBody": "This slide highlights the importance of Jensen's Inequality beyond static expectations, in dynamic stochastic settings."
+    },
+    {
+      "slideType": "single",
+      "headingLevel": "h2",
+      "bgColor": "#ffffff",
+      "fontColor": "#000000",
+      "inheritTheme": true,
+      "title": "Summary and Conclusion",
+      "kicker": "Takeaways",
+      "lede": "Key insights from Jensen's Inequality and its impact",
+      "leftBlocks": [
+        {
+          "mode": "plain",
+          "title": "Summary",
+          "content": "\\begin{itemize}\n\\item Jensen's Inequality links convexity and expectation\n\\item Provides fundamental bounds in probability and analysis\n\\item Widely applicable in statistics, economics, optimization, and finance\n\\item Underpins important results in martingale and stochastic process theory\n\\item Basis for future research in infinite-dimensional and machine learning contexts\n\\end{itemize}"
+        }
+      ],
+      "rightBlocks": [],
+      "notesTitle": "Conclusion Notes",
+      "notesBody": "The inequality's elegance and utility make it a cornerstone in many mathematical disciplines."
+    },
+    {
+      "slideType": "single",
+      "headingLevel": "h2",
+      "bgColor": "#ffffff",
+      "fontColor": "#000000",
+      "inheritTheme": true,
+      "title": "Future Directions",
+      "kicker": "Research Outlook",
+      "lede": "Potential extensions and applications of Jensen's Inequality",
+      "leftBlocks": [
+        {
+          "mode": "plain",
+          "title": "Future Work",
+          "content": "\\begin{itemize}\n\\item Extensions to infinite-dimensional spaces\n\\item Applications in modern machine learning frameworks\n\\item Deeper exploration in stochastic analysis and financial mathematics\n\\item Development of new inequalities inspired by Jensen's framework\n\\end{itemize}"
+        }
+      ],
+      "rightBlocks": [],
+      "notesTitle": "Future Work Notes",
+      "notesBody": "Encourages exploration of Jensen's Inequality in emerging mathematical and applied fields."
+    },
+    {
+      "slideType": "single",
+      "headingLevel": "h2",
+      "bgColor": "#ffffff",
+      "fontColor": "#000000",
+      "inheritTheme": true,
+      "title": "References",
+      "kicker": "Key Literature",
+      "lede": "Foundational and recent works on Jensen's Inequality",
+      "leftBlocks": [
+        {
+          "mode": "plain",
+          "title": "Selected References",
+          "content": "\\begin{itemize}\n\\item Hardy, Littlewood, Pólya (1934) - Inequalities\n\\item Rockafellar (1970) - Convex Analysis\n\\item Durrett (2019) - Probability: Theory and Examples\n\\item Shreve (2004) - Stochastic Calculus for Finance\n\\end{itemize}"
+        }
+      ],
+      "rightBlocks": [],
+      "notesTitle": "References Notes",
+      "notesBody": "These works provide foundational and advanced insights into Jensen's Inequality and its applications."
+    }
+  ],
+  "metadata": {
+    "style": "research-talk",
+    "targetSlideCount": 10,
+    "rootPath": "main.tex",
+    "generatedAt": "2026-05-20T20:45:13.605Z",
+    "warnings": []
+  }
+}

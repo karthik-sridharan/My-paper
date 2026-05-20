@@ -1,0 +1,105 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usetheme{Madrid}
+\title{Jensen's Inequality: Theory and Applications}
+\subtitle{An overview of Jensen's Inequality, its proof, significance, and applications in probability, statistics, and optimization.}
+\begin{document}
+\title{Jensen's Inequality: Theory and Applications}
+\subtitle{An overview of Jensen's Inequality, its proof, significance, and applications in probability, statistics, and optimization.}
+\frame{\titlepage}
+
+\begin{frame}{Abstract}
+Key concepts and scope of the paper
+
+\begin{block}{Abstract}
+This paper explores Jensen's Inequality, a cornerstone theorem in convex analysis and probability theory. We provide a clear statement of the theorem along with a proof leveraging convex functions and expectation operators. The inequality's broad applicability spans statistics, economics, and optimization.
+\end{block}
+\end{frame}
+
+\begin{frame}{Related Work}
+Historical and modern perspectives on Jensen's Inequality
+
+\begin{block}{Key References}
+\begin{itemize}
+\item Hardy, Littlewood, and Pólya (1934): foundational convex analysis
+\item Rockafellar (1970): formal convex function theory
+\item Durrett (2019), Shreve (2004): applications in probability and finance
+\item Extensions in martingale theory and stochastic processes
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Jensen's Inequality}
+Statement of Jensen's Inequality for convex functions and random vectors
+
+\begin{block}{Theorem (Jensen's Inequality)}
+Let \( F: \mathcal{X} \to \mathbb{R} \) be convex on convex set \( \mathcal{X} \subseteq \mathbb{R}^n \), and \( \mathbf{X} \) a random vector with \( \mathbb{E}[\mathbf{X}] \in \mathcal{X} \). Then:
+\[ F\big(\mathbb{E}[\mathbf{X}]\big) \leq \mathbb{E}[F(\mathbf{X})]. \]
+\end{block}
+\end{frame}
+
+\begin{frame}{Proof Sketch}
+Using subgradients and linearity of expectation
+
+\begin{block}{Proof Outline}
+By convexity, for any \( \mathbf{x}_0 \in \mathcal{X} \), there exists \( \mathbf{g} \in \partial F(\mathbf{x}_0) \) with:
+\[ F(\mathbf{x}) \geq F(\mathbf{x}_0) + \langle \mathbf{g}, \mathbf{x} - \mathbf{x}_0 \rangle, \quad \forall \mathbf{x} \in \mathcal{X}. \]
+Set \( \mathbf{x}_0 = \mathbb{E}[\mathbf{X}] \) and take expectation:
+\[ \mathbb{E}[F(\mathbf{X})] \geq F(\mathbb{E}[\mathbf{X}]) + \langle \mathbf{g}, \mathbb{E}[\mathbf{X}] - \mathbb{E}[\mathbf{X}] \rangle = F(\mathbb{E}[\mathbf{X}]). \]
+\end{block}
+\end{frame}
+
+\begin{frame}{Intuition Behind Jensen's Inequality}
+Convex functions lie below their tangent lines
+
+\begin{block}{Key Idea}
+\begin{itemize}
+\item Convexity means function lies below any supporting hyperplane
+\item Expectation is a weighted average of random variable values
+\item Inequality shows function of average \( \leq \) average of function values
+\item Visualized as chord lying above curve for convex functions
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Applications}
+Wide-ranging impact of Jensen's Inequality
+
+\begin{block}{Applications Overview}
+\begin{itemize}
+\item Bounding expectations in statistics
+\item Risk assessment in economics and finance
+\item Convex optimization problem analysis
+\item Martingale theory: convex functions of martingales form submartingales
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Role in Martingale Theory}
+Ensuring submartingale properties via convexity
+
+\begin{block}{Martingale Connection}
+\begin{itemize}
+\item Martingales model "fair game" sequences
+\item Jensen's Inequality applied to conditional expectations
+\item Convex functions of martingales are submartingales
+\item Fundamental in financial mathematics and stochastic analysis
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Conclusion and Future Work}
+Summary of results and potential research directions
+
+\begin{block}{Summary}
+\begin{itemize}
+\item Jensen's Inequality links convexity and expectation
+\item Provides fundamental bounds in multiple fields
+\item Plays a key role in martingale and stochastic process theory
+\item Future work: infinite-dimensional extensions, machine learning applications
+\end{itemize}
+\end{block}
+\end{frame}
+\end{document}

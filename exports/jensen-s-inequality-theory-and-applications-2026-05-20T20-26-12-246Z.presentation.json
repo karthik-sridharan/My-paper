@@ -1,0 +1,54 @@
+{
+  "schema": "latexai-presentation-json-v1",
+  "stage": "stage13a-paper-to-presentation-exporter-1",
+  "title": "Jensen's Inequality: Theory and Applications",
+  "subtitle": "A Lecture on Convex Analysis and Probability",
+  "slides": [
+    {
+      "title": "Introduction to Jensen's Inequality",
+      "kind": "content",
+      "bullets": [
+        "Fundamental theorem in convex analysis and probability",
+        "Relates convex functions and expectations",
+        "Widely used in statistics, economics, and optimization"
+      ],
+      "speakerNotes": "Introduce Jensen's Inequality as a key tool connecting convexity and expectation operators, emphasizing its broad applicability.",
+      "latex": "",
+      "figurePrompt": "",
+      "source": "abstract"
+    },
+    {
+      "title": "Statement and Proof of Jensen's Inequality",
+      "kind": "theorem",
+      "bullets": [
+        "Let F be convex on convex set X",
+        "X is a random vector with finite expectation in X",
+        "Inequality: F(E[X]) ≤ E[F(X)]"
+      ],
+      "speakerNotes": "Present the formal statement of Jensen's Inequality and highlight the convexity and expectation conditions.",
+      "latex": "\\begin{theorem}[Jensen's Inequality]\nLet \\( F: \\mathcal{X} \\to \\mathbb{R} \\) be a convex function defined on a convex set \\( \\mathcal{X} \\subseteq \\mathbb{R}^n \\), and let \\( \\mathbf{X} \\) be a random vector taking values in \\( \\mathcal{X} \\) with finite expectation \\( \\mathbb{E}[\\mathbf{X}] \\in \\mathcal{X} \\). Then\n\\[\nF\\big(\\mathbb{E}[\\mathbf{X}]\\big) \\leq \\mathbb{E}[F(\\mathbf{X})].\n\\]\n\\end{theorem}",
+      "figurePrompt": "",
+      "source": "main result"
+    },
+    {
+      "title": "Proof Sketch of Jensen's Inequality",
+      "kind": "proof-sketch",
+      "bullets": [
+        "Use convexity definition with subgradient at E[X]",
+        "Apply expectation operator to inequality",
+        "Simplify to obtain Jensen's Inequality"
+      ],
+      "speakerNotes": "Explain the key steps of the proof using subgradients and linearity of expectation to derive the inequality.",
+      "latex": "\\[\nF(\\mathbf{x}) \\geq F(\\mathbf{x}_0) + \\langle \\mathbf{g}, \\mathbf{x} - \\mathbf{x}_0 \\rangle \\quad \\text{for all } \\mathbf{x} \\in \\mathcal{X}\n\\]\n\\[\n\\mathbb{E}[F(\\mathbf{X})] \\geq F(\\mathbb{E}[\\mathbf{X}]) + \\mathbb{E}[\\langle \\mathbf{g}, \\mathbf{X} - \\mathbb{E}[\\mathbf{X}] \\rangle] = F(\\mathbb{E}[\\mathbf{X}])\n\\]",
+      "figurePrompt": "",
+      "source": "proof"
+    }
+  ],
+  "metadata": {
+    "style": "lecture",
+    "targetSlideCount": 3,
+    "rootPath": "main.tex",
+    "generatedAt": "2026-05-20T20:26:12.245Z",
+    "warnings": []
+  }
+}

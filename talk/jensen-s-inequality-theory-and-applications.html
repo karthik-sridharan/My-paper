@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jensen&#39;s Inequality: Theory and Applications</title>
+<style>
+body{margin:0;background:#e2e8f0;color:#0f172a;font-family:Arial,Helvetica,sans-serif}
+.deck{max-width:1100px;margin:0 auto;padding:32px}
+.slide{background:#fff;min-height:620px;margin:0 0 32px;padding:48px;border-radius:24px;box-shadow:0 18px 50px rgba(15,23,42,.16);page-break-after:always}
+.slide h2{font-size:42px;margin:0 0 18px}
+.title-center{display:flex;flex-direction:column;justify-content:center;text-align:center}
+.title-center h2{font-size:56px}
+.lede{font-size:24px;color:#475569}
+.blocks{display:grid;gap:18px}
+.two-col .blocks{grid-template-columns:1fr 1fr}
+.block{border:1px solid #cbd5e1;border-radius:18px;padding:18px;background:#f8fafc}
+.block h3{margin:0 0 10px;font-size:22px}
+.block p,.block li{font-size:21px;line-height:1.38}
+.math-block pre{white-space:pre-wrap;font-size:19px;line-height:1.35;background:#0f172a;color:#e5e7eb;padding:16px;border-radius:12px}
+.figure-block img{max-width:100%;border-radius:14px;border:1px solid #cbd5e1;background:white}
+.notes{margin-top:18px;color:#64748b;font-size:14px}
+@media print{body{background:#fff}.deck{padding:0}.slide{box-shadow:none;border-radius:0;margin:0;min-height:90vh}}
+</style>
+</head>
+<body>
+<main class="deck">
+<article class="slide title-center">
+<h2>A Lumina TRY LaTeX Project</h2>
+<p class="lede">Exploring Jensen&#39;s Inequality in convex analysis and probability theory</p>
+<div class="blocks"></div>
+<aside class="notes"><strong>Introduction</strong><p>This presentation covers Jensen&#39;s Inequality, a fundamental result linking convex functions and expectations, with applications in various fields.</p></aside>
+</article>
+<article class="slide single">
+<h2>Abstract</h2>
+<p class="lede">Key concepts and scope of the paper</p>
+<div class="blocks"><section class="block"><h3>Abstract</h3><p>This paper explores Jensen&#39;s Inequality, a cornerstone theorem in convex analysis and probability theory. We provide a clear statement of the theorem along with a proof leveraging convex functions and expectation operators. The inequality&#39;s broad applicability spans statistics, economics, and optimization.</p></section></div>
+
+</article>
+<article class="slide single">
+<h2>Related Work</h2>
+<p class="lede">Historical and modern perspectives on Jensen&#39;s Inequality</p>
+<div class="blocks"><section class="block math-block"><h3>Key References</h3><pre>\begin{itemize}
+\item Hardy, Littlewood, and Pólya (1934): foundational convex analysis
+\item Rockafellar (1970): formal convex function theory
+\item Durrett (2019), Shreve (2004): applications in probability and finance
+\item Extensions in martingale theory and stochastic processes
+\end{itemize}</pre></section></div>
+
+</article>
+<article class="slide single">
+<h2>Jensen&#39;s Inequality</h2>
+<p class="lede">Statement of Jensen&#39;s Inequality for convex functions and random vectors</p>
+<div class="blocks"><section class="block math-block"><h3>Theorem (Jensen&#39;s Inequality)</h3><pre>Let \( F: \mathcal{X} \to \mathbb{R} \) be convex on convex set \( \mathcal{X} \subseteq \mathbb{R}^n \), and \( \mathbf{X} \) a random vector with \( \mathbb{E}[\mathbf{X}] \in \mathcal{X} \). Then:
+\[ F\big(\mathbb{E}[\mathbf{X}]\big) \leq \mathbb{E}[F(\mathbf{X})]. \]</pre></section></div>
+
+</article>
+<article class="slide single">
+<h2>Proof Sketch</h2>
+<p class="lede">Using subgradients and linearity of expectation</p>
+<div class="blocks"><section class="block math-block"><h3>Proof Outline</h3><pre>By convexity, for any \( \mathbf{x}_0 \in \mathcal{X} \), there exists \( \mathbf{g} \in \partial F(\mathbf{x}_0) \) with:
+\[ F(\mathbf{x}) \geq F(\mathbf{x}_0) + \langle \mathbf{g}, \mathbf{x} - \mathbf{x}_0 \rangle, \quad \forall \mathbf{x} \in \mathcal{X}. \]
+Set \( \mathbf{x}_0 = \mathbb{E}[\mathbf{X}] \) and take expectation:
+\[ \mathbb{E}[F(\mathbf{X})] \geq F(\mathbb{E}[\mathbf{X}]) + \langle \mathbf{g}, \mathbb{E}[\mathbf{X}] - \mathbb{E}[\mathbf{X}] \rangle = F(\mathbb{E}[\mathbf{X}]). \]</pre></section></div>
+
+</article>
+<article class="slide single">
+<h2>Intuition Behind Jensen&#39;s Inequality</h2>
+<p class="lede">Convex functions lie below their tangent lines</p>
+<div class="blocks"><section class="block math-block"><h3>Key Idea</h3><pre>\begin{itemize}
+\item Convexity means function lies below any supporting hyperplane
+\item Expectation is a weighted average of random variable values
+\item Inequality shows function of average \( \leq \) average of function values
+\item Visualized as chord lying above curve for convex functions
+\end{itemize}</pre></section></div>
+
+</article>
+<article class="slide single">
+<h2>Applications</h2>
+<p class="lede">Wide-ranging impact of Jensen&#39;s Inequality</p>
+<div class="blocks"><section class="block math-block"><h3>Applications Overview</h3><pre>\begin{itemize}
+\item Bounding expectations in statistics
+\item Risk assessment in economics and finance
+\item Convex optimization problem analysis
+\item Martingale theory: convex functions of martingales form submartingales
+\end{itemize}</pre></section></div>
+
+</article>
+<article class="slide single">
+<h2>Role in Martingale Theory</h2>
+<p class="lede">Ensuring submartingale properties via convexity</p>
+<div class="blocks"><section class="block math-block"><h3>Martingale Connection</h3><pre>\begin{itemize}
+\item Martingales model &quot;fair game&quot; sequences
+\item Jensen&#39;s Inequality applied to conditional expectations
+\item Convex functions of martingales are submartingales
+\item Fundamental in financial mathematics and stochastic analysis
+\end{itemize}</pre></section></div>
+
+</article>
+<article class="slide single">
+<h2>Conclusion and Future Work</h2>
+<p class="lede">Summary of results and potential research directions</p>
+<div class="blocks"><section class="block math-block"><h3>Summary</h3><pre>\begin{itemize}
+\item Jensen&#39;s Inequality links convexity and expectation
+\item Provides fundamental bounds in multiple fields
+\item Plays a key role in martingale and stochastic process theory
+\item Future work: infinite-dimensional extensions, machine learning applications
+\end{itemize}</pre></section></div>
+
+</article>
+</main>
+</body>
+</html>
