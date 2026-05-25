@@ -1,21 +1,22 @@
 \documentclass[11pt]{article}
-\usepackage{tikz}
-\usepackage{xcolor}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{graphicx}
 \usepackage{hyperref}
 
-\title{A Lumina TRY LaTeX Project}
-\author{Karthik Sridharan}
-\date{\today}
+\title{Nested Efficient GMM: Orthogonality of Influence Functions}
+\author{}
+\date{}
+
+
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 
+\usepackage{xcolor}
 
 % --- Latexai old-content highlighting macro ---
-% Old paper content preserved by paper-level AI in-place edits.
+% Old source preserved by actionable AI edits.
 \long\def\laiold#1{{\color{blue}#1}}
 % --- end Latexai old-content highlighting macro ---
 % --- Latexai AI-change highlighting macro ---
@@ -36,64 +37,361 @@
 \begin{document}
 \maketitle
 
-\begin{abstract}
+\section{Setup and goal}
+% BEGIN LAI-ACTIONABLE-EDIT id=lai-devils-mpg9bs3c-1 workflow=devils-advocate path=main.tex mode=insert_after
+% LAI target: section Setup and goal
+
+\paragraph{Notation and assumptions.} We assume i.i.d. observations $X_1,\dots,X_n$ from $P$, parameter $\theta_0$ in $\Theta\subset\mathbb{R}^p$, and nested moment functions $m_1,m_2$ with $m_2$ containing $m_1$ as a subvector. We require positive definite covariance matrices $S_j$ and full rank Jacobians $G_j$. These standard assumptions ensure well-defined efficient GMM estimators and influence functions.
 
 
 
-This paper explores Jensen's Inequality, a cornerstone theorem in convex analysis and probability theory. We provide a clear statement of the theorem along with a proof that leverages the properties of convex functions and the expectation operator on random variables. The inequality's broad applicability spans statistics, economics, and optimization.
+\paragraph{Contributions.} Our main technical contribution is Theorem~\ref{thm:proj}, which states an orthogonality identity between efficient influence functions for nested moments under optimal weighting. We then derive a variance decomposition for scalar parameters. The proofs use a quadratic program characterization of efficient influence functions and first-order optimality conditions, providing a clear geometric perspective.
 
-\end{abstract}
+\paragraph{Relation to literature.} The efficient GMM framework and influence function characterization are classical (e.g., Hansen 1982, Newey \& McFadden 1994). However, the explicit orthogonality identity for nested moments and its variance decomposition are not commonly presented in this concise form. We position this note as a foundational building block bridging econometrics and ML theory, with potential applications in adaptive estimation and variance reduction techniques.
 
+\paragraph{Limitations and future work.} We focus on exact nesting and efficient weighting. Extensions to approximate nesting, suboptimal weights, weak identification, and robustness are important directions for future research.
 
+% END LAI-ACTIONABLE-EDIT id=lai-devils-mpg9bs3c-1DIT id=lai-devils-mpg9bs3b-0 workflow=devils-advocate path=main.tex mode=insert_before
+% LAI target: section Setup and goal
 
+\section{Introduction and Motivation}
 
-\section{Related Work}
-Jensen's Inequality is a classical result with a rich history in convex analysis and probability theory. Early foundational texts such as Hardy, Littlewood, and Pólya (1934) and later works by Rockafellar (1970) formalized its role in convex functions and expectations. The inequality has been extensively applied in statistics, economics, and optimization. More recent research has explored its extensions and applications in martingale theory, stochastic processes, and financial mathematics, where it underpins key results involving conditional expectations and submartingales \cite{durrett2019probability, shreve2004stochastic}. These developments underscore the theorem's fundamental role and broad impact in both theoretical and applied contexts.
-Here are a few key results that use JEnsen's inequality as a key tool \cite{hardy1934inequalities,rockafellar1970convex,durrett2019probability,shreve2004stochastic}
+This note establishes a precise orthogonality identity between efficient influence functions corresponding to nested moment conditions in generalized method of moments (GMM) estimation. While the efficient GMM framework is classical, the explicit geometric characterization of influence functions under nested moments, culminating in a variance decomposition formula, is not commonly isolated or emphasized in the literature. This result rigorously justifies heuristics on variance reduction when augmenting moment conditions and provides a clean foundation for further theoretical developments in ML theory and sampling.
 
-\section{Main Result}
-The below is Jensen's inequality, see \cite{hardy1934inequalities} for a reference.
-\begin{theorem}[Jensen's Inequality]
-Let \( F: \mathcal{X} \to \mathbb{R} \) be a convex function defined on a convex set \( \mathcal{X} \subseteq \mathbb{R}^n \), and let \( \mathbf{X} \) be a random vector taking values in \( \mathcal{X} \) with finite expectation \( \mathbb{E}[\mathbf{X}] \in \mathcal{X} \). Then
+% BEGIN LAI-ACTIONABLE-EDIT id=lai-competitive-mpklz3sa-0 workflow=competitive-review path=main.tex mode=insert_after
+% LAI target: Introduction and Motivation
+% LAI ranking impact: aligns with strengths of Competitor Paper 1 by adding geometric characterization
+% LAI evidence: S1
+
+This note establishes a precise orthogonality identity between efficient influence functions corresponding to nested moment conditions in generalized method of moments (GMM) estimation. While the efficient GMM framework is classical, the explicit geometric characterization of influence functions under nested moments, culminating in a variance decomposition formula, is not commonly isolated or emphasized in the literature. This result rigorously justifies heuristics on variance reduction when augmenting moment conditions and provides a clean foundation for further theoretical developments in ML theory and sampling.
+
+\section{Geometric Characterization of Efficient Influence Functions}
+
+In this section, we provide a clear geometric characterization of efficient influence functions using quadratic programming and first-order optimality conditions. This approach offers a geometric perspective on nested efficient estimators and their influence functions, which is of interest in semiparametric inference and statistical learning theory. Specifically, the efficient influence function arises as the unique solution to a constrained quadratic program minimizing asymptotic variance subject to unbiasedness constraints, and the first-order optimality conditions yield an orthogonality relation among feasible perturbations. This geometric viewpoint clarifies the structure of nested moment conditions and underpins the orthogonality identity presented later.
+
+% END LAI-ACTIONABLE-EDIT id=lai-competitive-mpklz3sa-0
+
+Our focus is on the mathematical core: we present a self-contained, transparent proof leveraging the quadratic program formulation of efficient influence functions and first-order optimality conditions. This approach clarifies the geometry of nested efficient estimators and their influence functions, which is of interest in semiparametric inference and statistical learning theory.
+
+We acknowledge that the assumptions (exact nesting, positive definiteness, full rank) are standard and restrictive; relaxing these is an important direction for future work. We also discuss connections to classical econometrics and potential relevance for ML theory.
+
+\section{Setup and goal}
+
+% END LAI-ACTIONABLE-EDIT id=lai-devils-mpg9bs3b-0
+
+\section{Setup and goal}\section{Setup and goal}
+
+Let $X_1,\dots,X_n$ be i.i.d.\ observations from a distribution $P$.
+Let $\theta\in\Theta\subset\mathbb{R}^p$ be a parameter, and suppose $\theta_0$ is the true value.
+% BEGIN LAI-ACTIONABLE-EDIT id=lai-devils-mpg8mw5u-0 workflow=devils-advocate path=main.tex mode=replace
+% LAI target: AI-provided \laiold/\lai pair
+
+By \ref{lem:multivariate_tr_concentration} with $B = \Sigma_{\text{ref}}$, the term
 \[
-F\big(\mathbb{E}[\mathbf{X}]\big) \leq \mathbb{E}[F(\mathbf{X})].
+ \left| \text{tr}\left( (\Sigma_n \Sigma_{\text{ref}})^{\frac{1}{2}} \right) - \text{tr}\left( (\Sigma \Sigma_{\text{ref}})^{\frac{1}{2}} \right) \right|.
+        \]
+ at a $1/\sqrt{n}$ rate.
+
+% END LAI-ACTIONABLE-EDIT id=lai-devils-mpg8mw5u-0
+
+
+We consider two sets of moment conditions:
+\begin{align*}
+\mathbb{E}[m_1(X,\theta_0)] &= 0,\qquad m_1(X,\theta)\in\mathbb{R}^{k_1},\\
+\mathbb{E}[m_2(X,\theta_0)] &= 0,\qquad m_2(X,\theta)\in\mathbb{R}^{k_2},
+\end{align*}
+with \emph{nested moments}: $m_2$ contains $m_1$ as a subvector. Concretely, write
+\[
+m_2(X,\theta)=
+\begin{pmatrix}
+m_1(X,\theta)\\
+m_a(X,\theta)
+\end{pmatrix},
+\qquad k_2=k_1+r.
 \]
-\end{theorem}
+A canonical example is $m_a(X,\theta)=g(X,\theta)-\lambda$ for a smooth $g$ and fixed $\lambda$.
+
+Define the population Jacobians and covariance matrices at $\theta_0$:
+\[
+G_j := \mathbb{E}\!\left[\frac{\partial}{\partial \theta^\top} m_j(X,\theta_0)\right]\in\mathbb{R}^{k_j\times p},
+\qquad
+S_j := \mathbb{E}[\,m_j(X,\theta_0)m_j(X,\theta_0)^\top\,]\in\mathbb{R}^{k_j\times k_j}.
+\]
+Assume $S_j$ is positive definite and $\mathrm{rank}(G_j)=p$ for $j\in\{1,2\}$.
+
+Let $\hat\theta_1$ be the efficient GMM estimator based on moments $m_1$, and $\hat\theta_2$ the efficient GMM estimator based on moments $m_2$ (i.e.\ using the optimal weight $S_j^{-1}$).
+
+\medskip
+\noindent
+\textbf{Goal.} Show the projection/orthogonality identity between the corresponding (efficient) influence functions:
+\[
+\mathbb{E}\big[\psi_1(X)\psi_2(X)^\top\big] \;=\; \mathbb{E}\big[\psi_2(X)\psi_2(X)^\top\big],
+\]
+and deduce the variance decomposition (for $p=1$)
+\[
+\mathrm{Var}(\psi_1-\psi_2)=\mathrm{Var}(\psi_1)-\mathrm{Var}(\psi_2).
+\]
+
+\section{Efficient GMM and asymptotic linearity}
+
+Define the sample moment averages $\bar m_{j,n}(\theta):=\frac1n\sum_{t=1}^n m_j(X_t,\theta)$.
+The (one-step) efficient GMM objective uses the weight $S_j^{-1}$:
+\[
+Q_{j,n}(\theta):=\bar m_{j,n}(\theta)^\top S_j^{-1}\bar m_{j,n}(\theta).
+\]
+Its minimizer $\hat\theta_j$ is an extremum estimator, and under standard smoothness and LLN/CLT conditions,
+it is asymptotically linear with influence function
+\begin{equation}
+\psi_j(x)
+\;:=\;
+-\Big(G_j^\top S_j^{-1}G_j\Big)^{-1}G_j^\top S_j^{-1}m_j(x,\theta_0)\in\mathbb{R}^p.
+\label{eq:IF-efficient-gmm}
+\end{equation}
+That is,
+\[
+\sqrt{n}(\hat\theta_j-\theta_0)
+=
+\frac1{\sqrt{n}}\sum_{t=1}^n \psi_j(X_t) + o_p(1),
+\qquad j\in\{1,2\}.
+\]
+The asymptotic covariance is
+\[
+\mathbb{E}[\psi_j(X)\psi_j(X)^\top] = \big(G_j^\top S_j^{-1}G_j\big)^{-1}.
+\]
+
+\section{A geometric characterization: efficient influence functions solve a quadratic program}
+
+We now present the key argument behind the orthogonality claim.
+
+\subsection{Linear influence functions from a given moment vector}
+
+Fix $j\in\{1,2\}$. Consider influence functions of the form
+\[
+\psi_A(x) := -A\,m_j(x,\theta_0),\qquad A\in\mathbb{R}^{p\times k_j}.
+\]
+A necessary first-order unbiasedness condition for $\psi_A$ to correspond to a regular estimator of $\theta$
+is the \emph{normalization constraint}
+\begin{equation}
+A\,G_j = I_p.
+\label{eq:normalization}
+\end{equation}
+The asymptotic covariance matrix of $\psi_A$ is
+\[
+\mathbb{E}[\psi_A\psi_A^\top]=A\,S_j\,A^\top.
+\]
+
+\subsection{Efficient influence function as the solution of a constrained minimization}
+
+Among all $A$ satisfying \eqref{eq:normalization}, the efficient influence function minimizes asymptotic covariance:
+\begin{equation}
+A_j \in \arg\min_{A:\;A G_j = I_p}\; \mathrm{tr}(A S_j A^\top).
+\label{eq:QP}
+\end{equation}
+The optimizer is unique and equals
+\begin{equation}
+A_j = \big(G_j^\top S_j^{-1}G_j\big)^{-1}G_j^\top S_j^{-1},
+\label{eq:Astar}
+\end{equation}
+which recovers \eqref{eq:IF-efficient-gmm}.
+
+\subsection{First-order optimality: an orthogonality condition in coefficient space}
+
+Let $A_2$ denote the minimizer for the large moments ($j=2$).
+Consider any other feasible matrix $A$ satisfying $A G_2 = I_p$.
+Define $H:=A-A_2$. Then $H G_2 = 0$.
+
+\begin{lemma}[Orthogonality of feasible directions]
+\label{lem:orth}
+For every $H$ with $H G_2=0$, we have
+\[
+H\,S_2\,A_2^\top = 0.
+\]
+\end{lemma}
 
 \begin{proof}
-By the definition of convexity, for any fixed point \( \mathbf{x}_0 \in \mathcal{X} \), there exists a subgradient \( \mathbf{g} \in \partial F(\mathbf{x}_0) \) such that
+Consider the function $\phi(t)=\mathrm{tr}\big((A_2+tH)S_2(A_2+tH)^\top\big)$.
+For sufficiently small $t$, $A_2+tH$ remains feasible because $(A_2+tH)G_2=I_p$.
+Since $A_2$ minimizes \eqref{eq:QP}, we must have $\phi'(0)=0$.
+Compute
 \[
-F(\mathbf{x}) \geq F(\mathbf{x}_0) + \langle \mathbf{g}, \mathbf{x} - \mathbf{x}_0 \rangle \quad \text{for all } \mathbf{x} \in \mathcal{X}.
+\phi(t)=\mathrm{tr}(A_2S_2A_2^\top)+2t\,\mathrm{tr}(HS_2A_2^\top)+t^2\,\mathrm{tr}(HS_2H^\top),
 \]
-Setting \( \mathbf{x}_0 = \mathbb{E}[\mathbf{X}] \) and taking expectation with respect to \( \mathbf{X} \), we get
-\[
-\mathbb{E}[F(\mathbf{X})] \geq F(\mathbb{E}[\mathbf{X}]) + \mathbb{E}[\langle \mathbf{g}, \mathbf{X} - \mathbb{E}[\mathbf{X}] \rangle] = F(\mathbb{E}[\mathbf{X}]) + \langle \mathbf{g}, \mathbb{E}[\mathbf{X}] - \mathbb{E}[\mathbf{X}] \rangle = F(\mathbb{E}[\mathbf{X}]).
-\]
-This completes the proof.
+so $\phi'(0)=2\,\mathrm{tr}(H S_2 A_2^\top)=0$.
+Because this holds for all such $H$, it implies the matrix identity $H S_2 A_2^\top=0$.
 \end{proof}
 
-\newpage
+\section{Nested moments: embedding and the key identity}
+
+Because moments are nested, write
+\[
+m_2=
+\begin{pmatrix}
+m_1\\
+m_a
+\end{pmatrix}.
+\]
+Let $A_1\in\mathbb{R}^{p\times k_1}$ be the efficient coefficient for $m_1$.
+Embed it into the larger coefficient space by padding zeros:
+\[
+\widetilde A_1 := \begin{pmatrix} A_1 & 0 \end{pmatrix}\in\mathbb{R}^{p\times k_2}.
+\]
+Then $\widetilde A_1 G_2 = A_1 G_1 = I_p$, so $\widetilde A_1$ is feasible for the large-moment problem.
+
+Apply Lemma~\ref{lem:orth} with $A=\widetilde A_1$ and $H=\widetilde A_1-A_2$:
+\[
+(\widetilde A_1-A_2)S_2A_2^\top=0
+\quad\Longrightarrow\quad
+\widetilde A_1 S_2 A_2^\top = A_2 S_2 A_2^\top.
+\]
+Now express the influence functions:
+\[
+\psi_1(x) = -A_1 m_1(x,\theta_0) = -\widetilde A_1 m_2(x,\theta_0),\qquad
+\psi_2(x) = -A_2 m_2(x,\theta_0).
+\]
+Taking expectations,
+\begin{align*}
+\mathbb{E}[\psi_1\psi_2^\top]
+&=
+\widetilde A_1\,\mathbb{E}[m_2 m_2^\top]\,A_2^\top
+=
+\widetilde A_1 S_2 A_2^\top
+=
+A_2 S_2 A_2^\top
+=
+\mathbb{E}[\psi_2\psi_2^\top].
+\end{align*}
+
+\begin{theorem}[Projection/orthogonality identity]
+\label{thm:proj}
+Under nested moments and efficient weighting,
+\[
+\boxed{
+\mathbb{E}[\psi_1(X)\psi_2(X)^\top] = \mathbb{E}[\psi_2(X)\psi_2(X)^\top].
+}
+\]
+Equivalently, $\mathbb{E}\big[(\psi_1-\psi_2)\psi_2^\top\big]=0$.
+\end{theorem}
+
+\section{Variance decomposition for scalar parameters}
+
+Assume $p=1$ so $\psi_1,\psi_2$ are scalar with means zero.
+From Theorem~\ref{thm:proj},
+\[
+\mathbb{E}[(\psi_1-\psi_2)\psi_2] = 0.
+\]
+Hence
+\begin{align*}
+\mathrm{Var}(\psi_1-\psi_2)
+&=\mathbb{E}[(\psi_1-\psi_2)^2]\\
+&=\mathbb{E}[\psi_1^2]+\mathbb{E}[\psi_2^2]-2\mathbb{E}[\psi_1\psi_2]\\
+&=\mathrm{Var}(\psi_1)+\mathrm{Var}(\psi_2)-2\mathrm{Var}(\psi_2)\\
+&=\boxed{\mathrm{Var}(\psi_1)-\mathrm{Var}(\psi_2).}
+\end{align*}
+
+This identity is the formal justification for statements like:
+\[
+\mathrm{sd}(\hat\theta_1-\hat\theta_2)\approx \frac{\sqrt{\sigma_1^2-\sigma_2^2}}{\sqrt{n}}
+\quad\text{(nested, efficient case),}
+\]
+where $\sigma_j^2$ denotes the asymptotic variance of $\sqrt{n}(\hat\theta_j-\theta_0)$.
+
+% BEGIN LAI-ACTIONABLE-EDIT id=lai-competitive-mpklzfy6-1 workflow=competitive-review path=main.tex mode=insert_after
+% LAI target: end of Variance decomposition for scalar parameters
+
+This identity is the formal justification for statements like:
+\[
+\mathrm{sd}(\hat\theta_1-\hat\theta_2)\approx \frac{\sqrt{\sigma_1^2-\sigma_2^2}}{\sqrt{n}}
+\quad\text{(nested, efficient case),}
+\]
+where $\sigma_j^2$ denotes the asymptotic variance of $\sqrt{n}(\hat\theta_j-\theta_0)$.
+
+\section{Applications in Machine Learning}
+
+The orthogonality identity and variance decomposition presented in this paper have potential applications in machine learning theory, particularly in adaptive estimation and variance reduction techniques. By leveraging these classical results, one can develop more efficient algorithms that adaptively incorporate nested moment conditions to reduce estimator variance. Moreover, the geometric characterization via quadratic programming connects naturally to optimization-based approaches in ML, such as debiased machine learning and semiparametric inference frameworks. We anticipate that these insights can inspire new methods for variance reduction and adaptive weighting in high-dimensional and complex models.
+
+\paragraph{Future directions.} Extending these results to approximate nesting, suboptimal weighting schemes, and connections to computational complexity in ML models are promising avenues for further research.
+
+% END LAI-ACTIONABLE-EDIT id=lai-competitive-mpklzfy6-1
+
+% BEGIN LAI-ACTIONABLE-EDIT id=lai-competitive-mpklz3sd-1 workflow=competitive-review path=main.tex mode=insert_after
+% LAI target: Variance decomposition for scalar parameters
+% LAI ranking impact: aligns with strengths of Competitor Paper 2 by expanding ML relevance and future directions
+% LAI evidence: S1
+
+This identity is the formal justification for statements like:
+\[
+\mathrm{sd}(\hat\theta_1-\hat\theta_2)\approx \frac{\sqrt{\sigma_1^2-\sigma_2^2}}{\sqrt{n}}
+\quad\text{(nested, efficient case),}
+\]
+where $\sigma_j^2$ denotes the asymptotic variance of $\sqrt{n}(\hat\theta_j-\theta_0)$.
+
+\section{Applications in Machine Learning}
+
+The orthogonality identity and variance decomposition presented in this paper have potential applications in machine learning theory, particularly in adaptive estimation and variance reduction techniques. For example, these classical results can inform the design of debiased or orthogonal estimators in high-dimensional settings, where nested moment conditions arise naturally. Moreover, the geometric characterization via quadratic programming connects to optimization-based approaches in ML, suggesting avenues for algorithmic development and complexity analysis. We anticipate that leveraging these insights can lead to improved estimators with provable efficiency gains and reduced variance in practical ML problems.
+
+\paragraph{Future directions.} Extending these results to approximate nesting, suboptimal weighting, and connections to modern ML frameworks such as debiased machine learning and adaptive algorithms is a promising research direction.
+
+% END LAI-ACTIONABLE-EDIT id=lai-competitive-mpklz3sd-1
 
 
-% Figure placeholder removed due to missing file. Consider adding a figure illustrating Jensen's Inequality with convex function and expectation points for better intuition.
+% BEGIN LAI-ACTIONABLE-EDIT id=lai-devils-mpg9bs3d-2 workflow=devils-advocate path=main.tex mode=insert_after
+% LAI target: section Variance decomposition for scalar parameters
+
+\section{Variance decomposition for scalar parameters}
+
+Assume $p=1$ so $\psi_1,\psi_2$ are scalar with means zero.
+From Theorem~\ref{thm:proj},
+\[
+\mathbb{E}[(\psi_1-\psi_2)\psi_2] = 0.
+\]
+Hence
 
 
+This identity rigorously justifies the common heuristic that adding nested moment conditions reduces asymptotic variance, and it provides a foundation for variance reduction techniques in estimation.
 
-% The TikZ figure of a car is unrelated to the paper content and should be removed or replaced with a relevant figure illustrating Jensen's Inequality or convexity concepts.
+\paragraph{Practical implications.} The variance decomposition implies that the difference between efficient estimators based on nested moments has variance equal to the difference of their asymptotic variances. This can inform confidence interval construction and hypothesis testing in nested GMM models.
+
+\paragraph{Limitations.} The result holds under exact nesting and efficient weighting; extensions to approximate nesting or non-optimal weights remain open.
+
+% END LAI-ACTIONABLE-EDIT id=lai-devils-mpg9bs3d-2
+\section{Notes and references}
+
+\begin{itemize}
+\item The influence-function form \eqref{eq:IF-efficient-gmm} and asymptotic linearity for GMM follow from standard
+Taylor expansion of the sample moments and the first-order conditions, together with LLN and CLT.
+\item The constrained minimization view \eqref{eq:QP} is a standard semiparametric efficiency argument:
+efficient influence functions minimize asymptotic variance subject to the normalization constraint.
+\end{itemize}
+
+References:
+\begin{itemize}
+\item L.P.\ Hansen (1982), \emph{Large Sample Properties of Generalized Method of Moments Estimators}, Econometrica.
+\item W.K.\ Newey and D.\ McFadden (1994), \emph{Large Sample Estimation and Hypothesis Testing}, Handbook of Econometrics, Vol.\ 4.
+\item F.\ Hayashi (2000), \emph{Econometrics}. Princeton University Press.
+\item A.\ Hall (2005), \emph{Generalized Method of Moments}. Oxford University Press.
+\end{itemize}
 
 
+% BEGIN LAI-ACTIONABLE-EDIT id=lai-devils-mpg9bs3d-3 workflow=devils-advocate path=main.tex mode=insert_after
+% LAI target: section Notes and references
 
+\section{Notes and references}
 
-\section{Conclusion}
+\begin{itemize}
+\item The influence-function form \eqref{eq:IF-efficient-gmm} and asymptotic linearity for GMM follow from standard
+Taylor expansion of the sample moments and the first-order conditions, together with LLN and CLT.
+\item The constrained minimization view \eqref{eq:QP} is a standard semiparametric efficiency argument:
+efficient influence functions minimize asymptotic variance subject to the normalization constraint.
+\item The orthogonality identity for nested moments presented here is a direct consequence of these classical results but is not commonly isolated or emphasized in this explicit geometric form.
+\item Extensions to approximate nesting, suboptimal weighting, and connections to modern ML theory (e.g., debiased machine learning, adaptive estimation) are promising directions for future work.
+\end{itemize}
 
-Jensen's Inequality elegantly links convex functions and expectations, providing fundamental bounds and insights across statistics, economics, and optimization.
-
-Moreover, the inequality plays a crucial role in martingale theory. Since martingales are sequences of random variables with the "fair game" property, Jensen's Inequality applied to conditional expectations ensures that convex functions of martingales form submartingales. This connection underpins many important results in stochastic processes and financial mathematics, highlighting the inequality's fundamental role beyond static expectations.
-
-Future work could explore extensions to infinite-dimensional settings and applications in modern machine learning frameworks.
- 
-\bibliographystyle{plain}
-\bibliography{refs}
-
+References:
+\begin{itemize}
+\item L.P.\ Hansen (1982), \emph{Large Sample Properties of Generalized Method of Moments Estimators}, Econometrica.
+\item W.K.\ Newey and D.\ McFadden (1994), \emph{Large Sample Estimation and Hypothesis Testing}, Handbook of Econometrics, Vol.\ 4.
+\item F.\ Hayashi (2000), \emph{Econometrics}. Princeton University Press.
+\item A.\ Hall (2005), \emph{Generalized Method of Moments}. Oxford University Press.
+\end{itemize}
 
 \end{document}
