@@ -1,68 +1,280 @@
+%  Created by Sasha Rakhlin, Nov 22, 2011.
+%
 \documentclass[11pt]{article}
-\usepackage{xcolor}% added by Latexai for visible \lai / \laiold markup
-\usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amssymb,amsthm}
+%\usepackage{fourier}
+
+\usepackage{amsthm,amsmath, amssymb, latexsym}
+\usepackage{fullpage}
+%\usepackage[numbers]{natbib}
+\usepackage{algorithm,algorithmic}
+\usepackage{enumitem}
+\usepackage{pdfsync}
 \usepackage{graphicx}
-\usepackage{hyperref}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage[mathcal]{euscript}
+\usepackage{rotating}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=violet]{hyperref}
 
-  itle{A Lumina LaTeX Project}
-\author{Karthik Sridharan}
-\date{  oday}
+\usepackage{natbib}
+\bibliographystyle{plainnat}
+\bibpunct{(}{)}{;}{a}{,}{,}
+
+% vector multiplication
+\newcommand{\inner}[1]{\left\langle #1 \right\rangle}
+\newcommand{\tr}{\ensuremath{{\scriptscriptstyle\mathsf{\,T}}}} 
 
 
-ewtheorem{theorem}{Theorem}
+%%%%%% Caligraphic and bold letters
+\newcommand{\cA}{\ensuremath{\mathcal A}}
+\newcommand{\cB}{\ensuremath{\mathcal B}}
+\newcommand{\cD}{\ensuremath{\mathcal D}}
+\newcommand{\E}{\ensuremath{\mathbb E}} 
+\newcommand{\F}{\ensuremath{\mathcal F}} 
+\newcommand{\cG}{\ensuremath{\mathcal G}} 
+\newcommand{\cH}{\ensuremath{\mathcal H}} 
+\newcommand{\cK}{\ensuremath{\mathcal K}}
+\newcommand{\cN}{\ensuremath{\mathcal N}} 
+\newcommand{\cR}{\ensuremath{\mathcal R}}
+\newcommand{\cP}{\ensuremath{\mathcal P}}
+\newcommand{\cS}{\ensuremath{\mathcal S}}
+\newcommand{\cW}{\ensuremath{\mathcal W}}
+\newcommand{\cX}{\ensuremath{\mathcal X}}
+\newcommand{\cY}{\ensuremath{\mathcal Y}}
+\newcommand{\cZ}{\ensuremath{\mathcal Z}}
 
-ewtheorem{lemma}{Lemma}
 
-% --- Latexai AI-change highlighting macro ---
-% Set this to \laishowchangestrue to hide red AI markup.
-\newif\iflaishowchanges
-\laishowchangestrue
-\long\def\lai#1{%
-  \iflaishowchanges
-    {\color{red}#1}%
-  \else
-    #1%
-  \fi
+\newcommand{\mrm}[1]{\mathrm{#1}}
+
+%
+\newcommand{\reals}{\ensuremath{\mathbb R}}
+\newcommand{\sign}{\ensuremath{\mbox{sign}}}
+%\newcommand{\hatf}{\ensuremath{\hat{f}}}
+\newcommand{\ind}[1]{{\bf I}\left\{#1\right\}}
+\def\deq{\triangleq}
+\newcommand{\Reg}{\ensuremath{\text{\textbf{Reg}}}}
+
+% Expectations
+\newcommand{\En}{\E}
+\newcommand{\Eunderone}[1]{\underset{#1}{\E}}
+\newcommand{\Eunder}[2]{\underset{\underset{#1}{#2}}{\E}}
+
+\newcommand{\card}[1]{\ensuremath{\mbox{card}\left(#1\right)}}
+\newcommand{\conv}[1]{\ensuremath{\mbox{conv}\left(#1\right)}}
+
+\newcommand{\vcdim}[1]{\ensuremath{\text{vc}\left(#1\right)}}
+\newcommand{\ldim}[1]{\ensuremath{\text{ldim}\left(#1\right)}}
+
+%%%%%% Notation for the general setup
+\newcommand{\loss}{\ensuremath{\boldsymbol\ell}} 
+\newcommand{\exploss}{\boldsymbol L}
+\newcommand{\emploss}{\widehat{L}}
+\newcommand{\condemploss}{\bar{L}}
+
+\newcommand{\onehalf}{\ensuremath{\frac{1}{2}}}
+\newcommand{\bone}{\ensuremath{\mathbf{1}}}
+\newcommand{\pen}{\ensuremath{\mbox{pen}}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\fat}{\text{\rm fat}}
+\newcommand{\ball}[2]{\ensuremath{\mathsf{B}}_{#1}^{#2}}
+
+% our prediction
+\newcommand{\pred}{\boldsymbol{\widehat{y}}}
+\newcommand{\hatf}{\pred}
+\newcommand{\predset}{\mathcal{D}}
+\newcommand{\mathsc}[1]{{\normalfont\textsc{#1}}}
+\newcommand{\rw}{\mathsc{w}}
+\newcommand{\rx}{\mathsc{x}}
+\newcommand{\ry}{\mathsc{y}}
+\newcommand{\rz}{\mathsc{z}}
+
+
+\newcommand{\rf}{\ensuremath{\mathrm f}} 
+\newcommand{\p}{\ensuremath{\mathbf p}} 
+\newcommand{\h}{\ensuremath{\mathbf h}} 
+\newcommand{\g}{\ensuremath{\mathbf g}} 
+\newcommand{\vv}{\ensuremath{\mathbf v}}
+\newcommand{\s}{\ensuremath{\mathbf s}} 
+\newcommand{\w}{\ensuremath{\mathbf w}}  
+\newcommand{\x}{\ensuremath{\mathbf x}} 
+\newcommand{\y}{\ensuremath{\mathbf y}} 
+\newcommand{\z}{\ensuremath{\mathbf z}} 
+% \newcommand{\btree}{\ensuremath{\mathbf b}}
+% \newcommand{\btree}{\ensuremath{\mathbf{b}}}
+\newcommand{\argmin}[1]{\underset{#1}{\mrm{argmin}} \ }
+\newcommand{\argmax}[1]{\underset{#1}{\mrm{argmax}} \ }
+
+\newcommand{\Es}[2]{\mbb{E}_{#1}\left[ #2 \right]}
+
+\newcommand\Prob{\mbf{P}}
+
+
+
+
+
+% Frame
+\newcommand{\frameit}[1]{
+    \begin{center}
+    \framebox[.95\columnwidth][l]{
+        \begin{minipage}{.9\columnwidth}
+        #1
+        \end{minipage}
+    }
+    \end{center}
 }
-\long\def\laiold#1{{\color{blue}#1}}
-% --- end Latexai AI-change highlighting macro ---
+
+
+
+%%%%%% Theorems, Lemmas, etc.
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{proposition}[theorem]{Proposition}
+%\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{remark}[theorem]{Remark}
+%\newtheorem{assumption}[theorem]{Assumption}
+%\newtheorem{condition}[theorem]{Condition}
+%\theoremstyle{definition}
+%\newtheorem{example}{Example}
+%\newtheorem{definition}[theorem]{Definition}
+
+
+
+
+
+\newcommand\grey[1]{{\color[rgb]{0.80,0.80,0.80}#1}}
+\newcommand\red[1]{{\color[rgb]{0.80,0.00,0.00}\textbf{#1}}}
+\newcommand\blue[1]{{\color[rgb]{0.00,0.00,0.80}\textbf{#1}}}
+
+
+
+\usepackage{calc} 
+
+\newcommand{\multiminimax}[1]{\ensuremath{\left\llangle #1\right\rrangle}}
+
+\newcommand{\karthik}[1]{\textcolor{red}{#1}}
+\newcommand{\del}[1]{\textcolor{gray}{#1}}
+\newcommand{\explain}[1]{\textcolor{green}{\%\%\%#1\%\%\%}}
+\newcommand{\algo}{\widehat{f}_n}
+
+\title{Recovery of nonlinear dynamics from trajectory} 
+
+\author{}
+
+\date{\today}
+
+\makeindex
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-This Stage 1E keeps the Lumina provider foundation and adds a real backend compile runner with TeX Live, isolated temporary workspaces, backend health checks, status polling, structured logs, and click-to-line diagnostics.
 \end{abstract}
 
-\section{Architecture}
-\laiold{The browser stores a canonical project object and sends that object to a trusted backend for compilation or AI assistance. The editor, compiler, preview, sync, and AI pieces communicate through provider contracts instead of direct cross-module calls.}\lai{%
-The architecture centers on a structured, versioned project object that resides within the browser. This canonical project object encapsulates the current state, including document content, metadata, and version history, supporting incremental updates and collaborative editing. The browser transmits this object to a trusted backend for compilation or AI assistance. Communication between the editor, compiler, preview, sync, and AI modules occurs through well-defined provider contracts, which abstract implementation details and facilitate modularity. This design ensures that each component interacts with the project data in a decoupled, flexible manner, enabling seamless updates and extensions.
-}
 
-% --- Latexai safe compiled edit: section: Architecture ---
-\lai{%
-A simple schematic diagram (not shown here) would illustrate the browser maintaining the project object, which is transmitted to the backend. Modules like the editor and compiler access this object via provider interfaces, which encapsulate their respective functionalities and data transformations. This modular approach aligns with established component-based architectures, promoting extensibility and robustness.
-}
-% --- end Latexai safe compiled edit ---
+\section{Least Squares}
+Consider generic setup
+$$x_{t+1} = f^*(x_t) + \eta_t$$
+where $f^*\in \F$, with $\F=\{f:\reals^d\to \reals^d\}$ a class of $d$-variate functions on $\reals^d$, and $\eta_t$ is a zero-mean noise vector. Suppose $n$ is time horizon and $\eta_1,\ldots,\eta_n$ are independent subGaussian. Let
+$$\algo = \argmin{f\in\F} \frac{1}{n}\sum_{t=1}^n \norm{x_{t+1}-f(x_t)}^2 := \emploss(f)$$ 
+be the constrained least squares solution. Optimality of $\algo$ implies
+$\emploss(\algo)\leq \emploss(f^*)$, which implies
+$$\sum_{t=1}^n \norm{\algo(x_t)-f^*(x_t)}^2 \leq 2\sum_{t=1}^n \inner{\eta_t, \algo(x_t)-f^*(x_t)}$$
+which we write as
+\begin{align}
+	\sum_{t=1}^n \norm{\algo(x_t)-f^*(x_t)}^2 &\leq 4\sum_{t=1}^n \inner{\eta_t, \algo(x_t)-f^*(x_t)} - \sum_{t=1}^n \norm{\algo(x_t)-f^*(x_t)}^2 \\
+	&\leq \sup_{f\in\F } \sum_{t=1}^n 4\inner{\eta_t, f(x_t)-f^*(x_t)} - \norm{f(x_t)-f^*(x_t)}^2
+\end{align}
+which yields sequential offset Rademacher complexity for vector-valued functions.
 
+Also note that for any $f$, conditionally on $x_t$,
+\begin{align}
+	\En_{\eta_t}\norm{f(x_t)-x_{t+1}}^2 - \En_{\eta_t}\norm{f^*(x_t)-x_{t+1}}^2 = \norm{f(x_t)-f^*(x_t)}^2
+\end{align}
+since the cross-term vanishes. Define
+$$\condemploss(f) = \frac{1}{n}\sum_{t=1}^n \En_{\eta_t}\norm{f(x_t)-x_{t+1}}^2$$
+which is a random quantity. We have
+$$\condemploss(f) - \condemploss(f^*) = \frac{1}{n}\sum_{t=1}^n \norm{f(x_t)-f^*(x_t)}^2$$
 
-\section{A Result}
-\begin{theorem}[Foundation seam]
-If each subsystem is hidden behind a provider interface, then browser-only mode, backend compile mode, and later real-time collaboration can share the same project format.
-\end{theorem}
+\section{Parametric case}
 
-\begin{proof}
-The project is represented by stable file paths and ids. UI events update the project state, and providers consume snapshots of that state. Replacing a provider changes implementation details but not the document model.
-\end{proof}
+Consider $$\F = \{x\mapsto \sigma(A x): A\in \Theta\}, ~~\Theta\subseteq \reals^{d\times d}$$
+and $\sigma$ is monotonic $\reals\to\reals$ applied coordinate-wise. Then
+\begin{align}
+	\norm{f(x_t)-f^*(x_t)}^2 = \norm{\sigma(Ax_t)-\sigma(A^* x_t)}^2 = \sum_{i=1}^d (\sigma(\inner{a_i,x_t})-\sigma(\inner{a_i^*,x_t}))^2
+\end{align}
+Observe that
+$$\sigma(\inner{a_i,x_t})-\sigma(\inner{a_i^*,x_t}) = \inner{a_i-a_i^*,x_t} \sigma'(\xi)$$
+for $\xi\in[\inner{a_i,x_t}, \inner{a_i^*,x_t}]$
+and since $\sigma$ is nondecreasing, the product 
+$$(\sigma(\inner{a_i,x_t})-\sigma(\inner{a_i^*,x_t}) )\cdot \inner{a_i-a_i^*,x_t} \geq 0.$$
+This means that
+\begin{align}
+	(\sigma(\inner{a_i,x_t})-\sigma(\inner{a_i^*,x_t}))^2 &= (\sigma(\inner{a_i,x_t})-\sigma(\inner{a_i^*,x_t})) \cdot \inner{a_i-a_i^*,x_t}) \cdot \sigma'(\xi)\\
+	&\leq (\sigma(\inner{a_i,x_t})-\sigma(\inner{a_i^*,x_t})) \cdot \inner{a_i-a_i^*,x_t}) \cdot L
+\end{align}
+where $|\sigma'|_\infty\leq L$. We conclude that
+\begin{align}
+	\condemploss(A)-\condemploss(A^*) &= \sum_{i=1}^d (\sigma(\inner{a_i,x_t})-\sigma(\inner{a_i^*,x_t}))^2\\
+	&\leq L \sum_{i=1}^d (\sigma(\inner{a_i,x_t})-\sigma(\inner{a_i^*,x_t})) \cdot \inner{a_i-a_i^*,x_t}\\
+	&= \inner{g(A,A^*), A-A^*}
+\end{align}
+with $g(A,A^*)$ is a matrix whose $i$th row is $[g(A,A^*)]_i = (\sigma(\inner{a_i,x_t})-\sigma(\inner{a_i^*,x_t})) x_t$. 
 
-\section{Next steps}
+Furthermore, since
+\begin{align}
+	\nabla  (\sigma(\inner{a_i,x_t})-\sigma(\inner{a_i^*,x_t}))^2 
+	&=(\sigma(\inner{a_i,x_t})-\sigma(\inner{a_i^*,x_t})) \cdot \sigma'(\inner{a_i,x_t}) \cdot x_t 
+\end{align}
+we can write
+\begin{align}
+	\condemploss(A)-\condemploss(A^*) 
+	&\leq L \sum_{i=1}^d (\sigma(\inner{a_i,x_t})-\sigma(\inner{a_i^*,x_t})) \cdot \inner{a_i-a_i^*,x_t}\\
+	&\leq (L/\ell) \sum_{i=1}^d (\sigma(\inner{a_i,x_t})-\sigma(\inner{a_i^*,x_t})) \cdot \inner{a_i-a_i^*,x_t} \cdot \sigma'(\inner{a_i,x_t})\\
+	&= (L/\ell) \inner{\nabla \condemploss(A), A-A^*}
+\end{align}
+and $\ell \leq |\sigma'|_\infty$.
+
 \begin{itemize}
-  \item Stage 1E: real backend PDF compilation, backend health checks, and safer temporary workspaces.
-  \item Stage 1E: structured Copilot fix-error workflows with patch preview.
-  \item Stage 1F: CodeMirror editor upgrade, source/PDF sync hooks, and import polish.
+	\item Check Nesterov's proof for convergence to first-order stationary points.
 \end{itemize}
 
-\bibliographystyle{plain}
+\section{$\condemploss$ vs $\emploss$}
+\begin{align}
+	\En\sup_{f\in\F}\left[\condemploss-\emploss\right] &= \En\sup_{f\in\F}\left[\frac{1}{n}\sum_{t=1}^n \En_{\eta_t}\norm{x_{t+1}-f(x_t)}^2 - \frac{1}{n}\sum_{t=1}^n \norm{x_{t+1}-f(x_t)}^2 \right]\\
+	&=\En\sup_{f\in\F}\left[\frac{1}{n}\sum_{t=1}^n 2\inner{\En_{\eta_t}[x_{t+1}']-x_{t+1},f(x_t)}\right] + \En\left[\frac{1}{n}\sum_{t=1}^n \En_{\eta_t}\norm{x_{t+1}'}^2-\norm{x_{t+1}}^2 \right]
+\end{align}
+
+\section{Ideas}
+\begin{itemize}
+\item Prove restricted eigenvalue for the empirical design matrix to get $s\log(d)/n$-type rates for the sparse setting.
+\item Prove covering number bounds for generic dynamical systems when $p\geq{}2$ using the skeleton aggregation technique adapted to this sequential setting (we have to figure out how to avoid sample splitting).
+\item Get efficient algorithms for the case where $\sigma$ is Lipschitz but unknown via isotron-style approach.
+\begin{itemize}
+\item Another note: Can we get the parametric rate for estimating $\Theta$ in this unknown $\sigma$ setting? Eg, using semiparametric approaches? One guess: If it's the same $\sigma$ across all coordinates, then the orthogonal/double machine learning-type approach may actually suffice. 
+\item Basic idea: If we were in the iid setting we could sample split and learn $\sigma$ using isotron/PAV, then use semiparametric least squares to learn $\Theta$. How does this argument work in the dependent setting?
+\item Can having large dimension actually make things easier here, since it means we get more "measurements" per time step (assuming $\sigma$ is fixed across all coordinates).
+\end{itemize}
+\item Handle the case where $\sigma(x)=\mathrm{sgn}(x)$. To show that this works for least squares using VC-type arguments, we basically need to show that our tree is not worst-case.
+\item Minimax lower bounds.
+\end{itemize}
+
+\section{Related work}
+
+\begin{itemize}
+\item \cite{baraud2001adaptive}
+\item \cite{van2002hoeffding}
+\item \cite{oymak2018stochastic}
+\end{itemize}
+
+\appendix
+
+%\bibliographystyle{plain}
 \bibliography{refs.bib}
 \end{document}
+
+
+
+
+
+
+
