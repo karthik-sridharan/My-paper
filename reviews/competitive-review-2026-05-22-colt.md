@@ -1,3 +1,18 @@
+% --- Latexai AI-change highlighting macro ---
+% Set this to \laishowchangestrue to hide red AI markup.
+\newif\iflaishowchanges
+\laishowchangestrue
+\long\def\lai#1{%
+  \iflaishowchanges
+    {\color{red}#1}%
+  \else
+    #1%
+  \fi
+}
+\long\def\laiold#1{{\color{blue}#1}}
+% --- end Latexai AI-change highlighting macro ---
+
+\usepackage{xcolor}% added by Latexai for visible \lai / \laiold markup
 # Competitive paper review
 
 Generated: 2026-05-22T20:30:02.884Z
@@ -312,3 +327,12 @@ Insertion: inline \laiold/\lai; readiness=match is already inside an existing La
 # Summary
 
 The current draft is a solid, mathematically elegant contribution in classical econometrics, providing a novel orthogonality identity and variance decomposition for nested efficient GMM estimators. However, relative to the competitor set focused on diffusion model alignment and reward steering with computational and algorithmic insights, it is less novel and less directly relevant to the COLT ML theory audience. To improve its ranking, the draft should broaden its scope to connect with modern ML theory, incorporate computational or algorithmic perspectives, and explore applications to diffusion or reward-aligned models. The suggested edits and roadmap aim to help the draft move from #3 to #2 in the competitive ranking.
+
+% --- Latexai targeted Devil's Advocate suggestion for section:  ---
+\lai{%
+This equation states the key mathematical condition and should be read together with the surrounding definitions.
+\[
+L(\theta)=\sum_{i=1}^n \ell(\theta;X_i).
+\]
+}
+% --- end Latexai targeted suggestion ---
