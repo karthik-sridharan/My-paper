@@ -1,0 +1,65 @@
+{
+  "project": {
+    "id": "860eb0a2-3e83-4b64-badb-76f0fbfa0183",
+    "title": "Sequential Rademacher Complexity",
+    "description": "We consider the problem of sequential prediction and provide tools to study the minimax\nvalue of the associated game. Classical statistical learning theory provides several useful\ncomplexity measures to study learning with i.i.d. data. Our proposed sequential complex-\nities can be seen as extensions of these measures to the sequential setting. The developed\ntheory is shown to yield precise learning guarantees for the problem of sequential predic-\ntion. In particular, we show necessary and su\ufb03cient conditions for online learnability in\nthe setting of supervised learning. Several examples show the utility of our framework: we\ncan establish learnability without having to exhibit an explicit online learning algorithm"
+  },
+  "nodes": [
+    {
+      "id": "89967124-177a-4877-a93f-69435e5bbc78",
+      "title": "Minimax Theorem",
+      "statement": "Let $\\mathcal{A}$ and $\\mathcal{B}$ be Banach spaces. Let $A\\subset \\mathcal{A}$ be nonempty, weakly compact, and convex, and let $B\\subset \\mathcal{B}$ be nonempty and convex. Let $g:\\mathcal{A}\\times\\mathcal{B}\\to \\reals$ be concave with respect to $b\\in B$ and convex and lower-semicontinuous with respect to $a\\in A$, and weakly continuous in $a$ when restricted to $A$. Then\n$$\n\n\t\t\\sup_{b\\in B} \\inf_{a\\in A} g(a,b) = \\inf_{a\\in A} \\sup_{b\\in B} g(a,b).\n$$",
+      "node_type": "theorem",
+      "status": "established",
+      "x": 116.24644881745044,
+      "y": 93.99476223252942,
+      "is_kg_node": false,
+      "kg_node_id": null
+    },
+    {
+      "id": "00be81ed-c3bb-4912-b6bc-33200551fd3b",
+      "title": "Value of Online Learning",
+      "statement": "The minimax value of the online learning game with loss function $\\ell$ is defined as\n$$\n\t\\mathrm{Val}_T(\\mathcal{F}, \\ \\mathcal{Z})  ~:=~ \\inf_{q_1\\in \\mathbf{Q}}\\sup_{z_1\\in\\ \\mathcal{Z}} \\mathbb{E}_{f_1 \\sim q_1} \\cdots  \\inf_{q_T\\in \\mathbf{Q}}\\sup_{z_T\\in \\mathcal{Z}} \\mathbb{E}_{f_T \\sim q_T} \\left[ \\sum_{t=1}^T \\ell(f_t,z_t) - \\inf_{f\\in \\mathcal{F}}\\sum_{t=1}^T \\ell(f,z_t)\\right] \\ .\n$$",
+      "node_type": "definition",
+      "status": "established",
+      "x": 124.15903295337222,
+      "y": 162.26720767864947,
+      "is_kg_node": false,
+      "kg_node_id": null
+    },
+    {
+      "id": "da611c5c-1e28-4060-87f7-8219cf308a0d",
+      "title": "Value to Sequential Rademacher",
+      "statement": "The minimax value of an online learning game with loss $\\ell$ is bounded as\n$$\n\\frac{1}{T}\\mathrm{Val}_T(\\mathcal{F}) \\le 2\\, \\mathrm{Rad}_T(\\ell(\\mathcal{F}))\n$$\nwhere $\\ell(\\mathcal{F}) = \\{\\ell(f,\\cdot): f\\in\\mathcal{F}\\}$.",
+      "node_type": "theorem",
+      "status": "target",
+      "x": 553.4222169182533,
+      "y": 200.42030757134853,
+      "is_kg_node": false,
+      "kg_node_id": null
+    },
+    {
+      "id": "0f467709-03ac-4055-b42d-9a8dfb8049e7",
+      "title": "Sequential Covering Number",
+      "statement": "Let $\\mathbf{z}$ be a $\\mathcal{Z}$-valued tree of depth $n$ and let $\\mathcal{F} \\subset \\mathbb{R}^{\\mathcal{Z}}$.  A covering at scale $\\delta$ is a set of binary real-valued trees $\\mathbf{v}^1, \\cdots, \\mathbf{v}^N$ such that for all $f \\in \\mathcal{F}$ and all $\\epsilon \\in \\{ \\pm 1 \\}^n$, there is some $j$ such that\n$$\n      \\left\\|f(\\mathbf{z}(\\epsilon)) - \\mathbf{v}^j(\\epsilon) \\right\\|^2\\leq n\\delta^2.\n$$\n  The covering number $N(\\mathcal{F}, \\delta, \\mathbf{z})$ of a class $\\mathcal{F}$ for a tree $\\mathbf{z}$ at scale $\\delta$ is the minimal $N$ such that there exists a $\\delta$-covering of size $N$.\n",
+      "node_type": "definition",
+      "status": "established",
+      "x": 474.7625564767253,
+      "y": 108.66683239776353,
+      "is_kg_node": false,
+      "kg_node_id": null
+    },
+    {
+      "id": "d64b3f13-948d-4a78-8c03-fb0d818a580e",
+      "title": "Sequential Rademacher Complexity ",
+      "statement": "Let $\\mathcal{F} \\subset \\mathbb{R}^{\\mathcal{Z}}$. The sequential Rademacher complexity of the function class $\\mathcal{F}$ is defined as \n$$\n \\mathrm{Rad}_T(\\mathcal{F}) = \\frac{1}{T} \\sup_{\\mathbf{z}} \\mathbb{E}_\\epsilon\\left[\\sup_{f \\in \\mathcal{F}} \\sum_{t=1}^T \\epsilon_t f(\\mathbf{z}_t(\\epsilon)) \\right]\n$$\nWhere $\\mathbf{z} = (\\mathbf{z}_1,\\ldots,\\mathbf{z}_T)$ is a $\\mathcal{Z}$-valued tree of depth $T$ and $\\epsilon_1,\\ldots,\\epsilon_T$ are drawn as Rademacher random variables. ",
+      "node_type": "definition",
+      "status": "established",
+      "x": 267.59634743419815,
+      "y": 231.87399664119235,
+      "is_kg_node": false,
+      "kg_node_id": null
+    }
+  ],
+  "edges": []
+}
